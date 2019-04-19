@@ -1,0 +1,10 @@
+{
+    "AppSyncApiName": "awsbloggraphqlapi",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognito0cc202b6",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
