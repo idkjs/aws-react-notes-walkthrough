@@ -1,18 +1,18 @@
 {
 	"auth": {
-		"cognito0cc202b6": {
+		"cognito5d9a37f8": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation"
 		}
 	},
 	"analytics": {
-		"awsblogrdsanalytics": {
+		"awsreactnoteswalkthr": {
 			"service": "Pinpoint",
 			"providerPlugin": "awscloudformation"
 		}
 	},
 	"api": {
-		"awsbloggraphqlapi": {
+		"awsreactnoteswalkthrAPI": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {

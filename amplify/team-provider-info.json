@@ -1,18 +1,18 @@
 {
     "dev": {
         "awscloudformation": {
-            "AuthRoleName": "aws-blog-rds-starter-20190419111851-authRole",
-            "UnauthRoleArn": "arn:aws:iam::073051392232:role/aws-blog-rds-starter-20190419111851-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::073051392232:role/aws-blog-rds-starter-20190419111851-authRole",
+            "AuthRoleName": "awsreactnoteswalkthr-20190419190832-authRole",
+            "UnauthRoleArn": "arn:aws:iam::073051392232:role/awsreactnoteswalkthr-20190419190832-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::073051392232:role/awsreactnoteswalkthr-20190419190832-authRole",
             "Region": "eu-west-1",
-            "DeploymentBucketName": "aws-blog-rds-starter-20190419111851-deployment",
-            "UnauthRoleName": "aws-blog-rds-starter-20190419111851-unauthRole",
-            "StackName": "aws-blog-rds-starter-20190419111851",
-            "StackId": "arn:aws:cloudformation:eu-west-1:073051392232:stack/aws-blog-rds-starter-20190419111851/256c9930-6284-11e9-9019-0a9c21152684"
+            "DeploymentBucketName": "awsreactnoteswalkthr-20190419190832-deployment",
+            "UnauthRoleName": "awsreactnoteswalkthr-20190419190832-unauthRole",
+            "StackName": "awsreactnoteswalkthr-20190419190832",
+            "StackId": "arn:aws:cloudformation:eu-west-1:073051392232:stack/awsreactnoteswalkthr-20190419190832/c2ba4f20-62c5-11e9-9368-0ae78d106d3e"
         },
         "categories": {
             "auth": {
-                "cognito0cc202b6": {}
+                "cognito5d9a37f8": {}
             }
         }
     }

@@ -1,5 +1,5 @@
 projects:
-  awsbloggraphqlapi:
+  awsreactnoteswalkthrAPI:
     schemaPath: src/graphql/schema.json
     includes:
       - src/graphql/**/*.js
@@ -10,7 +10,7 @@ projects:
         codeGenTarget: javascript
         generatedFileName: ''
         docsFilePath: src/graphql
-        graphQLApiId: x3b4tpqarvfwpbmyupu73uqsxa
+        graphQLApiId: tpz72rqnsjbmtoubxvn6x7rqra
       endpoints:
         prod: >-
-          https://sh7okop5mzb5beal7hi4f5o5pi.appsync-api.eu-west-1.amazonaws.com/graphql
+          https://ax4p6m463nfthamf6sel5eokoq.appsync-api.eu-west-1.amazonaws.com/graphql

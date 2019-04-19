@@ -1,0 +1,20 @@
+{
+    "appName": "awsreactnoteswalkthr",
+    "roleName": "pinpointLambdaRoleb9c6d928",
+    "cloudWatchPolicyName": "cloudWatchPolicyb9c6d928",
+    "pinpointPolicyName": "pinpointPolicyb9c6d928",
+    "authPolicyName": "pinpoint_amplify_b9c6d928",
+    "unauthPolicyName": "pinpoint_amplify_b9c6d928",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}
