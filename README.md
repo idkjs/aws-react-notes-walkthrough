@@ -231,7 +231,13 @@ class Note extends React.Component {
     )
   }
 }
-
+function getStyle(type, filter) {
+  if (type === filter) {
+    return {
+      fontWeight: 'bold'
+    }
+  }
+}
 const styles = {
   container: {
     borderBottom: '1px solid rgba(0, 0, 0, .15)',
