@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "aws-blog-rds-starter-20190419111851-authRole",
+            "UnauthRoleArn": "arn:aws:iam::073051392232:role/aws-blog-rds-starter-20190419111851-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::073051392232:role/aws-blog-rds-starter-20190419111851-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "aws-blog-rds-starter-20190419111851-deployment",
+            "UnauthRoleName": "aws-blog-rds-starter-20190419111851-unauthRole",
+            "StackName": "aws-blog-rds-starter-20190419111851",
+            "StackId": "arn:aws:cloudformation:eu-west-1:073051392232:stack/aws-blog-rds-starter-20190419111851/256c9930-6284-11e9-9019-0a9c21152684"
+        },
+        "categories": {
+            "auth": {
+                "cognito0cc202b6": {}
+            }
+        }
+    }
+}

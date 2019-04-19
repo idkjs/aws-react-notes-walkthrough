@@ -1,0 +1,14 @@
+{
+	"auth": {
+		"cognito0cc202b6": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"analytics": {
+		"awsblogrdsanalytics": {
+			"service": "Pinpoint",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}

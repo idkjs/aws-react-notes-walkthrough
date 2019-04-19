@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import Form from './components/Form';
 import Notes from './components/Notes';
 
+import Amplify, { Analytics } from 'aws-amplify';
+import aws_exports from './aws-exports';
+
+Amplify.configure(aws_exports);
 class App extends Component {
   state = { notes: [], filter: 'none' }
   createNote = async note => {

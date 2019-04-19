@@ -403,3 +403,101 @@ npm start
 ```
 
 You should be able to create, update & delete todos in your app. You'll notice that when you refresh, the data goes away. We'll fix this in a later step by storing our data in an AppSync API & fetching it when the app loads.
+
+# Part 2: Adding Cloud Features
+
+In this section, you will cloud enable your React app using the Amplify CLI.
+
+### Install Amplify CLI
+
+Amplify CLI is the command line tool that you will use to create and manage the backend for your React app. In the upcoming sections, you will use Amplify CLI to simplify various operations. The CLI enables you to create and configure your backend quickly, even without leaving the command line!
+
+### Installing and Configuring the CLI
+
+To use Amplify CLI with your project, you need to install it to your local development machine and configure it with your AWS credentials. Configuration is a one-time effort; once you configure the CLI, you can use it on multiple projects on your local machine. Because the CLI creates backend resources for you, it needs to utilize an AWS account with appropriate IAM permissions. During the configuration step, a new IAM role will be automatically created on your AWS account.
+
+To install and configure the Amplify CLI, run the following commands:
+
+```sh
+$ npm install -g @aws-amplify/cli
+
+$ npm amplify configure
+```
+
+> For a video walkthrough of how to configure the Amplify CLI, check out [this](https://www.youtube.com/watch?v=fWbM5DLh25U) video.
+
+### Amplify CLI vs. AWS Console
+
+The backend resources that are created by the CLI is available to you through the AWS Console, e.g., you can access your Amazon Cognito User Pool on the AWS Console after you enable auth with Amplify CLI.
+
+> To learn about Amplify CLI, visit the CLI developer documentation.
+
+### Initialize Your Backend
+
+To initialize your backend, run the following command in your project’s root folder:
+
+```sh
+$ amplify init
+```
+
+The CLI guides you through the options for your project. Select `React` as your framework when prompted:
+
+```sh
+ Please tell us about your project
+  ? What javascript framework are you using
+  ❯ react
+    react-native
+    angular
+    ionic
+    vue
+    none
+```
+
+When the CLI successfully configures your backend, the backend configuration files are saved to `/amplify` folder. You don’t need to manually edit the content of this folder as it is maintained by the CLI.
+
+### Adding Analytics
+
+Let’s add our first backend feature to our app, Analytics. Adding Analytics won’t change the user experience though, but it will provide valuable metrics that you can track in Amazon Pinpoint dashboard.
+
+While enabling Analytics, you will also learn how to use Amplify CLI and configure your app to work with various backend services.
+
+### How the Amplify CLI works?
+
+When you deploy your backend with Amplify CLI, here is what happens under the hood:
+
+1. The CLI creates and provisions related resources on your account
+2. The CLI updates your ‘/amplify’ folder, which has all the relevant information about your backend on AWS
+3. The CLI updates the configuration file aws-exports.js with the latest resource credentials
+
+As a front-end developer, you need to import the auto generated aws-exports.js configuration file in your React app, and configure your app with Amplify.configure() method call.
+
+So, to enable analytics to your application, run the following commands:
+
+```sh
+$ amplify add analytics
+$ amplify push
+```
+
+After successfully executing the push command, the CLI updates your configuration file _aws-exports.js_ in your ‘/src’ folder with the references to the newly created resources.
+
+## Working with The Configuration File
+
+The next step is to import _aws-exports.js_ configuration file into your app.
+
+To configure your app, open __src/App.js__ file and make the following changes in code:
+
+```js
+import Amplify, { Analytics } from 'aws-amplify';
+import aws_exports from './aws-exports';
+
+Amplify.configure(aws_exports);
+```
+
+### Monitoring App Analytics
+
+Refresh your application a couple of times, and then you will automatically start receiving usage metrics in the Amazon Pinpoint console.
+
+To view the Amazon Pinpoint console, visit [https://console.aws.amazon.com/pinpoint/home/](https://console.aws.amazon.com/pinpoint/home/) & select the region where you created the service.
+
+Since your application doesn’t have much functionality at the moment, only ‘session start’ events are displayed in Pinpoint Console. As you add more cloud features to your app - like authentication - Amplify will automatically report related analytics events to Amazon Pinpoint. So, you will know how your users are interacting with your app.
+
