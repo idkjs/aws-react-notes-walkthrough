@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import React, { Component } from 'react';
-import Form from './src/components/Form';
-import Notes from './src/components/Notes';
+import Form from './components/Form';
+import Notes from './components/Notes';
 // import API & graphqlOperation helpers from AWS Amplify
 import { API, graphqlOperation } from 'aws-amplify'
 
@@ -11,7 +11,7 @@ import { listNotes } from './graphql/queries'
 import { withAuthenticator } from 'aws-amplify-react'
 
 import Amplify, { Analytics } from 'aws-amplify';
-import aws_exports from './src/aws-exports';
+import aws_exports from './aws-exports';
 
 Amplify.configure(aws_exports);
 class App extends Component {
