@@ -2,7 +2,9 @@
 Here is the sequence of the tutorial:
 
 [Part 1: Creating the React App](https://github.com/dabit3/react-notes#part-1-create-a-react-app)
+
 [Part 2: Adding Cloud Features](./PART2.md)
+
 [Part 3: Enabling GraphQL Backend](./Part3.md)
 
 # Part 1: Create a React App
