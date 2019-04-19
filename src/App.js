@@ -2,6 +2,7 @@ import { css } from 'glamor';
 import React, { Component } from 'react';
 import Form from './components/Form';
 import Notes from './components/Notes';
+import { withAuthenticator } from 'aws-amplify-react'
 
 import Amplify, { Analytics } from 'aws-amplify';
 import aws_exports from './aws-exports';
@@ -99,4 +100,5 @@ const styles = {
     padding: 8,
   }
 }
-export default App;
+// export default App;
+export default withAuthenticator(App, { includeGreetings: true })

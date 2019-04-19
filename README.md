@@ -501,3 +501,133 @@ To view the Amazon Pinpoint console, visit [https://console.aws.amazon.com/pinpo
 
 Since your application doesn’t have much functionality at the moment, only ‘session start’ events are displayed in Pinpoint Console. As you add more cloud features to your app - like authentication - Amplify will automatically report related analytics events to Amazon Pinpoint. So, you will know how your users are interacting with your app.
 
+### Adding Authentication
+
+Now that you know how to utilize Amplify CLI to enable backend services, you can continue to add new features to your React app easily.
+
+User authentication will be the next cloud feature you will enable.
+
+If you have been following the tutorial from the start and enabled Analytics in the previous step, auth is already enabled for your app (analytics needs secure credentials for reporting metrics). **In this case, you just need to run update auth command to create a User Pool that will store your registered users**:
+
+```sh
+$ amplify update auth
+
+> Do you want to use the default authentication and security configuration? Yes, use the default configuration.
+
+$ amplify push
+```
+
+If you have not enabled Analytics earlier, you will be using auth features for the first time. Run the following command:
+
+```sh
+$ amplify add auth
+$ amplify push
+```
+
+When prompted by the CLI, chose ‘default configuration’:
+
+```sh
+Do you want to use the default authentication and security configuration?
+❯ Yes, use the default configuration.
+```
+
+> AWS Amplify’s Authentication category works with Amazon Cognito, a cloud-based authentication and federation service that enables you to manage user access to your applications.
+
+## Enabling the UI Components for Auth
+
+One of the most important benefits of Amplify Framework is that you don’t need to implement standard app features - like user authentication - from scratch. Amplify provides UI components that you can integrate into your app with just a few lines of code.
+
+## Rendering the Auth UI
+
+Now, let’s put the auth UI components in our home page. We'll be using the `withAuthenticator` higher order component from the _aws-amplify-react_ library.
+
+The `withAuthenticator` component renders a pre-built sign-in and sign-up flow with full-fledged auth functionality like user registration, password reminders, and Multi-factor Authentication.
+
+Open __src/App.js__. Import the `withAuthenticator` component & replace the default export for the component:
+
+```js
+import { withAuthenticator } from 'aws-amplify-react'
+
+export default withAuthenticator(App, { includeGreetings: true })
+```
+
+### Test Your Auth Flow
+
+Now, refresh your app. Once your application loads, you will see login/signup controls.
+
+![](auth.jpg)
+
+### Where is the user data stored?
+
+When a new user registers through the `withAuthenticator` component, the user data is stored in your Cognito User Pool. A user pool is a user directory in Amazon Cognito. With a user pool, your users can sign in to your app through Amazon Cognito. You can visit [Amazon Cognito console](https://console.aws.amazon.com/cognito/home), and see the list of registered users by selecting the User Pool that is created for your app.
+
+# Part 3: Enabling GraphQL Backend
+
+So far, your app is powered by Amazon Cognito User Pools, but we do not yet have any real yet as far as storing data. In this part, you will integrate your app with a GraphQL API (powered by AWS AppSync) that will store your notes in a NoSQL database (Amazon DynamoDB).
+
+### What is GraphQL?
+
+GraphQL is a modern way of building APIs for your apps and interacting with your backend. It has many benefits over REST – such as using a single endpoint, powerful query syntax, data aggregation from multiple sources and a type system to describe the data – but the overall goal is to make your front-end development experience easy and more productive.
+
+The Amplify CLI will also help you when creating the GraphQL backend.
+
+### Create a GraphQL API
+
+In the root folder of your app project, run the following command:
+
+```sh
+amplify add api
+```
+
+Then, select GraphQL as the service type:
+
+```sh
+? Please select from one of the below mentioned services (Use arrow keys)
+❯ GraphQL
+  REST
+```
+
+> API category supports GraphQL and REST endpoints. In this tutorial, we will create our backend on GraphQL, which uses AWS AppSync.
+
+When you select GraphQL as the service type, the CLI offers you options to create a schema. A schema defines the data model for your GraphQL backend.
+
+Select Single object with fields when prompted What best describes your project?. This option will create a GraphQL backend data model which we can modify and use in our app:
+
+```sh
+? Provide API name: reactnotes
+? Choose an authorization type for the API Amazon Cognito User Pool
+Use a Cognito user pool configured as a part of this project
+? Do you have an annotated GraphQL schema? No
+? Do you want a guided schema creation? true
+? What best describes your project:
+? What best describes your project: Single object with fields (e.g., “Todo” with ID, name, description)
+? Do you want to edit the schema now? Yes
+```
+
+This should open a GraphQL schema in your text editor (located at amplify/backend/api/reactnotes/schema.graphql).
+
+Update the schema to the following & save the file:
+
+```graphql
+type Note @model {
+  id: ID!
+  name: String!
+  description: String
+  status: String!
+}
+```
+
+Deploy your GraphQL backend:
+
+```sh
+$ amplify push
+```
+
+When prompted, choose code generation language target as JavaScript:
+
+```sh
+? Do you want to generate code for your newly created GraphQL API: Yes
+? Choose the code generation language target: javascript
+? Enter the file name pattern of graphql queries, mutations and subscriptions: src/graphql/**/*.js
+? Do you want to generate/update all possible GraphQL operations - queries, mutations and subscriptions: Yes
+```
